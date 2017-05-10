@@ -1,0 +1,21 @@
+.contacts {
+  height: 100vh;
+  background: teal;
+}
+
+.contacts-pane {
+  height: 10vh;
+  background: yellow;
+  min-height: 100px;
+}
+
+.chats {
+  height: 100vh;
+  background: #141E30;
+}
+
+.chats-pane {
+  height: 10vh;
+  background: green;
+  min-height: 100px;
+}
