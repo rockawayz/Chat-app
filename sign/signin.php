@@ -28,15 +28,17 @@
             $username = mysqli_real_escape_string($conn, $username);
             $password = mysqli_real_escape_string($conn, $password);
 
-            $sql = "SELECT * FROM users WHERE username='$username' LIMIT 1";
-            $query = mysqli_query($conn, $sql);
+            $query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username' LIMIT 1");
             $row = mysqli_fetch_array($query);
             $conn_password = $row['password'];
 
             if(md5($password) == $conn_password) {
+
               $_SESSION['username'] = $_POST['username'];
+              $_SESSION['user_id'] = $row['user_id'];
               $result = "success";
               echo $result;
+              
             } else {
                 $result = "Invalid username or password. ";
                 echo $result;

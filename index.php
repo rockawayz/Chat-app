@@ -1,5 +1,5 @@
 <?php
- 
+
   session_start();
 
   if (!isset($_SESSION['username']) && empty($_SESSION['username'])) {
@@ -28,9 +28,7 @@
         <div class="hidden-xs col-sm-4 col-md-4 col-lg-4 contacts">
 
           <div class="contacts-pane">
-            <p>
-              <?php echo $_SESSION['username']; ?>
-            </p>
+            <span id="username"><?php echo $_SESSION['username'] ?></span>
             <a href="signout.php">Sign out</a>
 
           </div>
@@ -38,19 +36,10 @@
 
             <h1>Contacts</h1>
 
-            <?php
+             <ul id="contacts">
 
-            $query = mysqli_query($conn, "SELECT username FROM users");
+             </ul>
 
-            if (mysqli_num_rows($query) > 0) {
-              while ($row = mysqli_fetch_assoc($query)) {
-                echo $row['username'] . "<hr>";
-              }
-            } else {
-              echo "No contact";
-            }
-
-             ?>
           </div>
 
         </div>
@@ -66,6 +55,9 @@
       </div>
 
     </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/chat.js"></script>
 
   </body>
 </html>

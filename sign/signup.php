@@ -42,7 +42,12 @@
                 // inputing into db
                 mysqli_query($conn, "INSERT INTO users VALUES(NULL, '$username', '".md5($password)."' ) ") or die (mysqli_error($conn)) ;
 
+                //checking user_id for newly created user
+                $q_id = mysqli_query($conn, "SELECT user_id FROM `users` WHERE username = $username");
+                $row_id = mysqli_fetch_array($q_id, MYSQLI_ASSOC);
+
                 $_SESSION['username'] = $_POST['username'];
+                $_SESSION['user_id'] = $row_id['user_id'];
 
                 $result = "success";
                 echo $result;
