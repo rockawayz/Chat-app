@@ -120,7 +120,15 @@ function msg(error){
 
   $(document).ready(function() {
 
-   $(".result").html("<p>" + error + "</p>");
+   $(".result").html("<span class='close_div'>X</span>"+"<p>" + error + "</p>");
 
  });
 }
+
+// close notification bar
+
+$(document).ready(function(){
+  $(".close_div").click(function(){
+    this.parentElement.style.display='none';
+  });
+});

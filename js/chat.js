@@ -17,11 +17,17 @@ $(document).ready(function(){
           url: "contacts.php",
           success: function(result) {
             // $("#contacts").html(JSON.stringify(result));
-            $.getJSON( "chat.js", function (result) {
-              $.each(result, function (i, value) {
-                $("#contacts").html(value);
-              })
-            })
+            $.getJSON( "contacts.php", function (result) {
+              var contacts = [];
+              $.each(result, function(value) {
+                console.log(value[]);
+                // contacts.push("<li>" + value + "</li>");
+              });
+              $( "<ul/>", {
+                "class": "cont",
+                html: contacts.join("")
+              }).appendTo("#contacts");
+            });
           },
           error: function(result) {
             $("#contacts").html(JSON.stringify(result));
